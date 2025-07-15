@@ -6,7 +6,7 @@ app = FastAPI()
 
 # CORS config
 origins = [
-    "http://localhost:5173",  # frontend dev en Vite
+    "https://task-manager-frontend-rose-gamma.vercel.app",  # frontend dev en Vite
 ]
 
 app.add_middleware(
