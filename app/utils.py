@@ -1,14 +1,23 @@
 import os
+import json
 from dotenv import load_dotenv
 from google.cloud import firestore
 from google.oauth2 import service_account
 
-# Cargar variables de entorno
+# Cargar .env local (opcional en producción)
 load_dotenv()
 
-project_id = os.getenv('PROJECT_ID')
-database_name = os.getenv('DATABASE')
-credentials = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+# Cargar credenciales como texto JSON desde variable de entorno
+credentials_json = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+if not credentials_json:
+    raise ValueError("Falta la variable GOOGLE_APPLICATION_CREDENTIALS_JSON")
 
-# Inicializar Firestore
-db = firestore.Client(project=project_id, database=database_name, credentials=service_account.Credentials.from_service_account_file(credentials))
+info = json.loads(credentials_json)
+creds = service_account.Credentials.from_service_account_info(info)
+
+# Leer project_id y database si lo necesitas
+project_id = os.getenv("PROJECT_ID")
+database_name = os.getenv("DATABASE")
+
+# Inicializar Firestore con parámetros explícitos
+db = firestore.Client(project=project_id, database=database_name, credentials=creds)
