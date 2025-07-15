@@ -8,7 +8,7 @@ load_dotenv()
 
 project_id = os.getenv('PROJECT_ID')
 database_name = os.getenv('DATABASE')
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+credentials = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 
 # Inicializar Firestore
-db = firestore.Client(project=project_id, database=database_name)
+db = firestore.Client(project=project_id, database=database_name, credentials=service_account.Credentials.from_service_account_file(credentials))
