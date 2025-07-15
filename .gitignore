@@ -1,0 +1,11 @@
+# Entorno virtual
+venv/
+__pycache__/
+*.pyc
+
+# Configuración local
+.env
+
+# Archivos del editor
+.vscode/
+.idea/
