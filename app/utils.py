@@ -15,9 +15,8 @@ if not credentials_json:
 info = json.loads(credentials_json)
 creds = service_account.Credentials.from_service_account_info(info)
 
-# Leer project_id y database si lo necesitas
+# Leer project_id si lo necesitas
 project_id = os.getenv("PROJECT_ID")
-database_name = os.getenv("DATABASE")
 
 # Inicializar Firestore con parámetros explícitos
-db = firestore.Client(project=project_id, database=database_name, credentials=creds)
+db = firestore.Client(project=project_id, credentials=creds)
