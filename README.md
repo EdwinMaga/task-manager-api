@@ -2,6 +2,11 @@
 
 Una API REST para gestión de tareas personales, construida con **FastAPI** y **Firestore**.
 
+## 🌍 Demo
+
+- **API (Producción):** https://task-manager-api-bnps.onrender.com
+- **Swagger Docs:** https://task-manager-api-bnps.onrender.com/docs
+
 ## 🚀 Tecnologías
 
 - FastAPI
